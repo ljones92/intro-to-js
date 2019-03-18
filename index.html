@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Intro to JavaScript</title>
+
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/black.css" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? "css/print/pdf.css"
+        : "css/print/paper.css";
+      document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <div>
+            <img
+              class="plain"
+              width="300"
+              style="background: none"
+              src="images/codeupleeds.png"
+              alt="code up logo"
+            />
+          </div>
+          <h2>Intro to JavaScript</h2>
+        </section>
+
+        <section>
+          <h3>What is JavaScript?</h3>
+          <ul>
+            <li>
+              Created by Brendan Eich in 1995 as "LiveScript", which was later
+              renamed to "JavaScript"
+            </li>
+            <li>
+              Standardized by the <b>ECMAScript</b> specifications. This
+              introduction covers
+              <a href="https://www.ecma-international.org/ecma-262/6.0/"
+                >ES2015</a
+              >(also known as ES6)
+            </li>
+            <li>
+              A <b>client-side processing language</b>. A browser reads the code
+              and runs it directly
+            </li>
+            <li>
+              Combined with <b>HTML</b> & <b>CSS</b>, JavaScript allows you to
+              build dynamic webpages
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>What can JavaScript do?</h3>
+          <a href="https://gyazo.com/1ea0791eece706f4ab9ff8213a4e1fbf"
+            ><img
+              src="https://i.gyazo.com/1ea0791eece706f4ab9ff8213a4e1fbf.gif"
+              alt="https://gyazo.com/1ea0791eece706f4ab9ff8213a4e1fbf"
+          /></a>
+        </section>
+
+        <section>
+          <h3>Script Tags</h3>
+          <p>
+            You can mix JavaScript and HTML. The <b>script tag</b> tells your
+            browser that what's inside is code, not content
+          </p>
+          <pre><code class="html">&lt;script&gt;CODE GOES HERE&lt;/script&gt;</code></pre>
+          <p>
+            JavaScript code can also be moved out to its own file and
+            loaded into HTML with the script tag
+          </p>
+          <pre><code class="html">&lt;script src="path/to/file.js"&gt;&lt;/script&gt;</code></pre>
+        </section>
+
+        <section>
+          <h3>Time to Write some Code!</h3>
+          <p>
+            Head over to
+            <a href="https://stackblitz.com/fork/js"
+              >https://stackblitz.com/fork/js</a
+            >, and you'll be given a JS starter project in your browser!
+          </p>
+          <p>
+            Have a look in each of the files that you've been given, the
+            important ones for now are the index.html and index.js files
+          </p>
+          <p>
+            See if you can get the preview on the right to display "Hello World!" in
+            place of "JS Starter"
+          </p>
+          <aside class="notes">
+            Test notes
+          </aside>
+        </section>
+
+        <section>
+          <h3>Breaking it Down</h3>
+          <p>The bits that matter are:</p>
+          <pre><code><div id="app"></div></code></pre>
+          <p>and:</p>
+          <pre><code data-trim class="javascript">
+            const appDiv = document.getElementById('app');
+            appDiv.innerHTML = `<h1>JS Starter</h1>`;
+          </code></pre>
+          But what does it all mean?
+        </section>
+
+        <section>
+          <section>
+            <h3>HTML Selectors</h3>
+            <pre><code><div id="app"></div></code></pre>
+            <p>
+              This piece of HTML is simply creating an empty container on the page
+              which has a unique identifier in the form of its ID
+            </p>
+            <p>
+              An ID is an example of an HTML selector of which there are 3 main types. These
+              selectors allow JS and CSS to interact with the HTML.
+            </p>
+          </section>
+
+          <section>
+            <h3>ID</h3>
+            <pre><code data-trim class="html">
+              <div id="unique-id"></div>
+              <span id="another-unique-id"></span>
+            </code></pre>
+
+            <p>
+              IDs should be unique across the entire HTML document and an element can only
+              have a single ID. They are identified with a '#' in CSS and JS
+            </p>
+          </section>
+
+          <section>
+            <h3>Class</h3>
+            <pre><code class="html">
+<div class="some-class"></div>
+<span class="some-class"></span>
+            </code></pre>
+  
+            <p>
+              Classes are similar to IDs in their use but they do not need to be unique,
+              multiple elements can possess the same class and a single element can have
+              multiple classes assigned to it. They are identified with a '.' in CSS and JS
+            </p>
+          </section>
+
+          <section>
+            <h3>Tag</h3>
+            <pre><code class="html">
+<div></div>
+<h3></h3>
+            </code></pre>
+  
+            <p>
+              The final main way to identify an element is simply using its tag name directly
+            </p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Variables</h3>
+            <pre><code data-noescape><mark>const appDiv</mark> = document.getElementById('app');</code></pre>
+
+            <p>
+              This line of code is creating a variable named appDiv and initialiasing it
+              with the value returned by <code>document.getElementById('app')</code>
+            </p>
+            <p>
+              A variable is a container that stores a value and can be reused
+            </p>
+            <p>
+              There are a few different ways to declare a variable
+            </p>
+          </section>
+          <section>
+            <h3>let</h3>
+
+            <pre><code>let test = "Hello";</code></pre>
+
+            <p>
+              <code>let</code> declares a block scope variable that can be reassigned
+            </p>
+
+            <pre><code data-trim>
+              let test = "Hello";
+              console.log(test);
+              // expected output: Hello
+
+              test = "Hello Again!"
+              console.log(test);
+              // expected output: Hello Again!
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>const</h3>
+
+            <pre><code class="javascript">const test = "Hello";</code></pre>
+
+            <p>
+              <code>const</code> declares a block scope variable that can not be reassigned
+            </p>
+
+            <pre><code data-trim class="javascript">
+              const test = "Hello";    
+              test = "Hello Again!"
+              // TypeError: invalid assignment to const 'test'
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>var</h3>
+
+            <pre><code>var test = "Hello";</code></pre>
+
+            <p>
+              <code>var</code> declares a function/global scope variable
+            </p>
+
+            <p>
+              <code>var</code> was the original way to declare a variable before ES2015
+              introduced <code>let</code> and <code>const</code> which are the better
+              things to use now
+            </p>
+          </section>
+
+          <section>
+            <h3>Exercise</h3>
+
+            <ul>
+              <li>Create some appropriately named variables to store your name and age</li>
+              <li>Create some new divs in the HTML and write the variable data into them</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Functions</h3>
+            <pre><code data-noescape class="javascript">const appDiv = <mark>document.getElementById('app');</mark></code></pre>
+
+            <p>
+              <code>document</code> is the entrypoint for JS into the DOM (Document Object Model), it provides
+              a collection of functions to query the HTML.
+              There's a function for each of the selectors we mentioned earlier:
+            </p>
+            <pre><code class="javascript">document.getElementById(id);</code></pre>
+            <pre><code class="javascript">document.getElementsByClassName(className);</code></pre>
+            <pre><code class="javascript">document.getElementsByTagName(tagName);</code></pre>
+            <p>
+              In this case we're using getElementById and passing in 'app' which is the value of the
+              id in our HTML.
+            </p>
+          </section>
+          <section>
+            <h3>What the Func is a Function?</h3>
+            <p>
+              A function is a reusable segment of code, they are composed of a
+              sequence of statements called the function body.
+              Values can be passed to a function, and the function will return a value.
+            </p>
+          </section>
+          <section>
+            <h3>Anatomy of a function</h3>
+            <pre>
+                <code data-trim class="javascript">
+                  function multiply(x, y) {
+                    return x * y;
+                  }
+
+                  const value = multiply(2, 7);
+                  console.log(value);
+                  // expected output: 14
+                </code>
+              </pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Modifying the HTML</h3>
+
+            <pre><code data-trim class="javascript">
+              appDiv.innerHTML = `<h1>JS Starter</h1>`;
+            </code></pre>
+
+            <p>
+              Here we are taking appDiv, the variable created in the previous step
+              and accessing the <code>innerHTML</code> field inside it. This is a field
+              that can be accessed in all DOM Nodes.
+            </p>
+            <p>
+              Then we are reassigning the value to be <pre><code>`<h1>JS Starter</h1>`</code></pre> which
+              dynamically modifies the HTML to display that text!
+            </p>
+          </section>
+          <section>
+            <h3>A Quick Note on Data Types</h3>
+            <ul>
+              <li><b>string</b> string of characters
+                <pre><code class="javascript">let userName = "Laurence Jones";</code></pre>
+              </li>
+              <li><b>number</b> integer or floating point
+                <pre><code class="javascript">let myAge = 26;</code></pre>
+                <pre><code class="javascript">let yearsAsDeveloper = 3.8;</code></pre>
+              </li>
+              <li><b>boolean</b> true or false
+                <pre><code class="javascript">let dogsAreAwesome = true;</code></pre>
+              </li>
+            </ul>
+          </section>
+          <section>
+              <h3>More Data Types</h3>
+              <ul>
+                <li><b>undefined</b> value that hasn't been defined
+                  <pre><code class="javascript">let favouriteThings;</code></pre>
+                </li>
+                <li><b>null</b> an explicitly empty value
+                  <pre><code class="javascript">let goodPickupLines = null;</code></pre>
+                </li>
+                <li><b>symbol</b> a unique identifier
+                  <pre><code class="javascript">let id = Symbol();</code></pre>
+                </li>
+              </ul>
+          </section>
+          <section>
+            <h3>Why the Backticks?</h3>
+
+            <p>
+              Strings in JS are normally wrapped with either ' or ", both working the same
+            </p>
+            <p>
+              However you can also use a backtick (`) which comes with the nice extra feature
+              of string templating, using ${} allows you to pass variables into a string
+            </p>
+
+            <pre><code data-trim class="javascript">
+                const myName = "Laurence";
+                const myAge = 26;
+
+                console.log(
+                  `Hello, my name is ${myName} and I am ${myAge} years old`
+                );
+
+                // expected output: Hello, my name is Laurence
+                // and I am 26 years old
+              </code></pre>
+          </section>
+
+          <section>
+            <h3>Exercise</h3>
+
+            <ul>
+              <li>
+                Write a function which takes your name and age as parameters and returns
+                a greeting stating both, make sure to use string templating for this
+              </li>
+              <li>Write out your greeting onto the page</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <h3>Using the Console: The web developer's best friend</h3>
+          <ul>
+            <li>
+              Copy the url given at the top of the preview and open it in a new
+              tab
+            </li>
+            <li>
+              In Chrome, use the keyboard shortcut:
+              <ul>
+                <li>Mac: <strong>Command + Option + J</strong></li>
+                <li>Windows/Linux: <strong>Control + Shift + J</strong></li>
+              </ul>
+            </li>
+            <li>
+              This should open up the console tab in the dev tools.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>What does the console do?</h3>
+
+          <p>
+            The console allows us to easily debug our applications, any errors thrown
+            by the JavaScript will show up in the console.
+          </p>
+          <p>
+            We can also log things to the console ourselves using:
+            <pre>
+              <code data-trim class="javascript">
+                console.log("This will be logged in the console");
+              </code>
+            </pre>
+          </p>
+          <p>
+            We can even run JavaScript in the console, try typing 2 + 2 in there for example
+          </p>
+        </section>
+
+        <section>
+          <section>
+            <h3>Handling events in JavaScript</h3>
+
+            <p>
+              One of the key reasons for using JavaScript is being able to respond
+              to user input to create dynamic web pages, this can be done using `event listeners`
+            </p>
+            <p>
+              These listeners allow us to react to a wide variety of events including:  
+            </p>
+            <ul>
+              <li><code>click</code></li>
+              <li><code>scroll</code></li>
+              <li><code>keydown</code></li>
+            </ul>
+            <p>
+              And many more
+            </p>
+          </section>
+
+          <section>
+            <h3>Writing an event listener</h3>
+
+            <p>
+              Say we have a button with id 'button', we could create
+              a click event for this button by doing the following:
+            </p>
+            <pre>
+              <code data-trim class="javascript">
+                const button = document.getElementById('button');
+
+                button.addEventListener('click', function() {
+                  console.log('You\'ve clicked the button!');
+                });
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Exercise</h3>
+
+            <ul>
+              <li>
+                Add a div into the index.html with some text in it
+              </li>
+              <li>
+                Add an event listener so that when you hover over the div, the text changes to
+                something new
+              </li>
+            </ul>
+          </section>
+        </section>
+
+        <section>  
+          <section>
+            <h3>The if statement</h3>
+            <p>Use <code>if</code> statements to decide which lines of code to execute, based on a condition.</p>
+            <pre><code data-trim class="javascript">
+              if (condition) {
+                // statements to execute
+              }
+            </code></pre>
+          </section>
+  
+          <section>
+            <h3>Comparison Operators</h3>
+            <table style="font-size: 22px">
+              <thead>
+                <tr>
+                  <th>Example</th>
+                  <th>Name</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>a == b</code></td>
+                  <td>Equal</td>
+                  <td><strong><code>TRUE</code></strong> if <code>a</code> is equal to <code>b</code> (can be different types).</td>
+                </tr>
+                <tr>
+                  <td><code>a === b</code></td>
+                  <td>Identical</td>
+                  <td>
+                <strong><code>TRUE</code></strong> if <code>a</code> is equal to <code>b</code>, and the same type. </td>
+                </tr>
+                <tr>
+                  <td><code>a != b</code></td>
+                  <td>Not equal</td>
+                  <td><strong><code>TRUE</code></strong> if <code>a</code> is not equal to <code>b</code> (can be different types).</td>
+                </tr>
+                <tr>
+                  <td><code>a !== b</code></td>
+                  <td>Not identical</td>
+                  <td><strong><code>TRUE</code></strong> if <code>a</code> is not equal to <code>b</code>, or they are not the same type.</td>
+                </tr>
+                <tr>
+                  <td><code>a &lt; b</code></td>
+                  <td>Less than</td>
+                  <td><strong><code>TRUE</code></strong> if <code>a</code> is strictly less than <code>b</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>a &gt; b</code></td>
+                  <td>Greater than</td>
+                  <td><strong><code>TRUE</code></strong> if <code>a</code> is strictly greater than <code>b</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>a &lt;= b</code></td>
+                  <td>Less than or equal to </td>
+                  <td><strong><code>TRUE</code></strong> if <code>a</code> is less than or equal to <code>b</code>.</td>
+                </tr>
+                <tr>
+                  <td><code>a &gt;= b</code></td>
+                  <td>Greater than or equal to </td>
+                  <td><strong><code>TRUE</code></strong> if <code>a</code> is greater than or equal to <code>b</code>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+  
+          <section>
+            <h3>Watch out!</h3>
+            <p>Don't mix up <code>=</code> and <code>==</code> and <code>===</code></p>
+          </section>
+
+          <section>
+            <h3>The if/else statement</h3>
+            <p>Use <code>else</code> to provide an alternate set of instructions.</p>
+            <pre><code data-trim class="javascript">
+              const age = 26;
+            
+              if (age >= 18) {
+                console.log('Have a beer!');
+              } else {
+                console.log('No beer for you');
+              }
+            </code></pre>
+          </section>
+  
+          <section>
+            <h3>The if/else statement</h3>
+            <p>If you have multiple conditions, you can use <code>else if</code>.</p>
+            <pre><code data-trim class="javascript" style="font-size: 22px">
+              const pet = "dog";
+              
+              if (pet === "dog") {
+                console.log('You have the best type of pet');
+              } else if (pet === "cat") {
+                console.log('Better than nothing');
+              } else {
+                console.log('Get a dog');
+              }
+            </code></pre>
+          </section>
+        </section>
+
+        <section style="font-size: 30px">
+          <h3>Putting it all together</h3>
+
+          <ul>
+            <li>
+              Add the following lines to your index.html:
+              <pre>
+                <code data-trim class="html">
+                    <button id="button">Submit</button>
+                    <div id="text"></div>
+                </code>
+              </pre>
+            </li>
+            <li>
+              Create a constant called 'targetValue' which contains some integer
+            </li>
+            <li>
+              Make it so that typing a value in the input box and clicking submit will display
+              the following on the page:
+              <ol>
+                <li>'Too Low' if the value in the box is less than the target value</li>
+                <li>'Too High' if the value in the box is greater than the target value</li>
+                <li>'Spot On!' if the value in the box is equal to the target value</li>
+              </ol>
+            </li>
+            <li>HINT: The input element has a 'value' property which might be useful here</li>
+          </ul>
+        </section>
+
+        <!-- <section>
+          <h3>Comments</h3>
+          <p>
+            You can leave comments in your code - notes that people can read but
+            computers will ignore.
+          </p>
+          <pre>
+            <code class="javascript">
+  /*
+  You can make long comments
+  across multiple lines
+  */
+
+  console.log('Hello!'); // Or make short inline comments
+            </code>
+          </pre>
+        </section> -->
+
+        <section id="further-reading">
+          <h2>Helpful resources</h2>
+          <ul>
+            <li>
+              <a href="https://stackoverflow.com">
+                stackoverflow.com
+              </a>
+            </li>
+
+            <li>
+              <a href="https://developer.mozilla.org/docs/Web">
+                developer.mozilla.org/docs/Web
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://join.slack.com/t/codeupleeds/shared_invite/enQtMzgyODEzODYwODIxLWY1MTZkOTc0MGQ0ZDlhNTkzYmI2YmIxMGJiYzdjZjI5Y2Q1ZTgyMTQyZmZmOTBiZDQzNWQ4NmJlNjc3ZjlhN2E"
+              >
+                Join us on Slack!
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <div>
+            <div>
+              <h2>Feedback?</h2>
+              <img style="margin:auto" src="images/qr.png" />
+            </div>
+            <a href="https://bit.ly/2V7axKP">https://bit.ly/2V7axKP</a>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: "plugin/markdown/marked.js" },
+          { src: "plugin/markdown/markdown.js" },
+          { src: "plugin/notes/notes.js", async: true },
+          {
+            src: "plugin/highlight/highlight.js",
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }
+        ]
+      });
+    </script>
+  </body>
+</html>
