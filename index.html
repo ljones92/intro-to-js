@@ -301,7 +301,7 @@
 
         <section>
           <section>
-            <h3>Conditionals</h3>
+            <h3>Conditional Statements</h3>
             <p>We can use <code>if</code> statements to decide which lines of code to execute, based on a condition.</p>
             <pre><code data-trim class="javascript">
               if (condition) {
@@ -561,11 +561,12 @@
             </p>
             <pre>
               <code data-trim class="javascript">
-                let button = document.getElementById('button');
-
-                button.addEventListener('click', function() {
+                function handleButtonClick() {
                   console.log("You've clicked the button!");
-                });
+                }
+
+                let button = document.getElementById('button');
+                button.addEventListener('click', handleButtonClick);
               </code>
             </pre>
           </section>
